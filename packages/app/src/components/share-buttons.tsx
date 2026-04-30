@@ -18,7 +18,7 @@ export function ShareTwitterButton({ text }: { text?: string }) {
     <Button
       variant="outline"
       size="icon"
-      className="size-7"
+      className="size-8 rounded-md"
       title="Share on X (Twitter)"
       data-testid="share-twitter"
       onClick={() => {
@@ -43,7 +43,7 @@ export function ShareLinkedInButton() {
     <Button
       variant="outline"
       size="icon"
-      className="size-7"
+      className="size-8 rounded-md"
       title="Share on LinkedIn"
       data-testid="share-linkedin"
       onClick={() => {

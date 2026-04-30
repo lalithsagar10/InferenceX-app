@@ -38,11 +38,12 @@ export function ShareButton() {
   return (
     <Button
       data-testid="share-button"
-      variant="outline"
+      variant="secondary"
       size="sm"
       onClick={handleCopy}
-      className="h-7 gap-1.5 text-xs"
-      title="Copy share link to clipboard"
+      className="h-8 gap-1.5 rounded-md px-3 text-xs font-medium"
+      title="Copy share link for this view"
+      aria-label={copied ? 'Share link copied' : 'Copy share link'}
     >
       {copied ? (
         <>
@@ -52,7 +53,7 @@ export function ShareButton() {
       ) : (
         <>
           <LinkIcon className="size-3" />
-          Share
+          Share link
         </>
       )}
     </Button>
