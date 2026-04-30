@@ -1,6 +1,10 @@
 /** Send the ↑↑↓↓ unlock sequence to reveal the PowerX tab. */
 function unlockPowerX() {
-  cy.get('body').type('{uparrow}{uparrow}{downarrow}{downarrow}');
+  cy.get('body').click(0, 0, { force: true });
+  cy.get('body').type('{uparrow}{uparrow}{downarrow}{downarrow}', {
+    force: true,
+    delay: 40,
+  });
 }
 
 describe('PowerX', () => {
@@ -10,6 +14,7 @@ describe('PowerX', () => {
         win.localStorage.setItem('inferencex-star-modal-dismissed', String(Date.now()));
       },
     });
+    cy.get('[data-testid="inference-chart-display"]').should('exist');
   });
 
   it('PowerX tab is hidden by default', () => {

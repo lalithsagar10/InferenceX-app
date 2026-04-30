@@ -1,3 +1,8 @@
+const clickTabAndAssertPath = (triggerTestId: string, expectedPath: string) => {
+  cy.get(`[data-testid="${triggerTestId}"]`).should('be.visible').click({ force: true });
+  cy.location('pathname').should('eq', expectedPath);
+};
+
 describe('Chart Section Tabs — E2E', () => {
   before(() => {
     cy.window().then((win) => {
@@ -7,20 +12,15 @@ describe('Chart Section Tabs — E2E', () => {
   });
 
   it('updates the URL path when switching tabs', () => {
-    cy.get('[data-testid="tab-trigger-evaluation"]').click();
-    cy.url().should('include', '/evaluation');
+    clickTabAndAssertPath('tab-trigger-evaluation', '/evaluation');
 
-    cy.get('[data-testid="tab-trigger-historical"]').click();
-    cy.url().should('include', '/historical');
+    clickTabAndAssertPath('tab-trigger-historical', '/historical');
 
-    cy.get('[data-testid="tab-trigger-calculator"]').click();
-    cy.url().should('include', '/calculator');
+    clickTabAndAssertPath('tab-trigger-calculator', '/calculator');
 
-    cy.get('[data-testid="tab-trigger-gpu-specs"]').click();
-    cy.url().should('include', '/gpu-specs');
+    clickTabAndAssertPath('tab-trigger-gpu-specs', '/gpu-specs');
 
-    cy.get('[data-testid="tab-trigger-inference"]').click();
-    cy.url().should('include', '/inference');
+    clickTabAndAssertPath('tab-trigger-inference', '/inference');
   });
 
   it('opens GPU Reliability from the footer link', () => {

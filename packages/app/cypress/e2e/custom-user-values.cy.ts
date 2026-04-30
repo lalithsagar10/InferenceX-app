@@ -22,6 +22,11 @@ describe('Custom User Values', () => {
   });
 
   describe('Custom GPU Costs', () => {
+    beforeEach(() => {
+      selectCustomCostMetric();
+      cy.get('[data-testid="custom-costs-section"]').should('be.visible');
+    });
+
     it('renders the custom costs input section when custom cost metric is selected', () => {
       selectCustomCostMetric();
       cy.get('[data-testid="custom-costs-section"]').should('be.visible');
@@ -84,6 +89,12 @@ describe('Custom User Values', () => {
         .first()
         .invoke('val')
         .then((defaultVal) => {
+          cy.get('[data-testid="custom-costs-section"] input[id^="cost-input-"]')
+            .first()
+            .clear()
+            .type('9999')
+            .should('have.value', '9999');
+
           cy.get(
             '[data-testid="custom-costs-section"] button[aria-label="Reset to defaults"]',
           ).click();

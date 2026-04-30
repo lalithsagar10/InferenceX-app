@@ -199,8 +199,8 @@ export default function AboutPage() {
                     )}
                     {item.list && (
                       <ul className="mt-1.5 ml-8 list-disc space-y-0.5">
-                        {item.list.map((li) => (
-                          <li key={li}>{li}</li>
+                        {item.list.map((li, idx) => (
+                          <li key={`${li}-${idx}`}>{li}</li>
                         ))}
                       </ul>
                     )}
