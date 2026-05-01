@@ -34,12 +34,15 @@ afterEach(() => {
 });
 
 describe('ChartShareActions', () => {
-  it('renders the shared copy-link, X, and LinkedIn buttons with stable test ids', () => {
+  it('renders a share trigger and opens menu options with stable test ids', () => {
     renderUi(<ChartShareActions />);
 
     expect(container.querySelector('[data-testid="share-button"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="share-twitter"]')).not.toBeNull();
-    expect(container.querySelector('[data-testid="share-linkedin"]')).not.toBeNull();
+    act(() => {
+      (container.querySelector('[data-testid="share-button"]') as HTMLButtonElement).click();
+    });
+    expect(document.querySelector('[data-testid="share-twitter"]')).not.toBeNull();
+    expect(document.querySelector('[data-testid="share-linkedin"]')).not.toBeNull();
   });
 });
 
